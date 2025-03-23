@@ -26,8 +26,8 @@ RUN ln -s /usr/local/instantclient/libclntsh.so.21.1 /usr/local/instantclient/li
 RUN ln -s /usr/local/instantclient/lib* /usr/lib
 
 # Установка OCI8
-#RUN pecl install oci8 \
-#    && docker-php-ext-enable oci8
+RUN echo "instantclient,/usr/local/instantclient" | pecl install oci8 \
+    && docker-php-ext-enable oci8
 
 # Для PDO_OCI (если требуется)
 RUN docker-php-ext-configure pdo_oci --with-pdo-oci=instantclient,/usr/local/instantclient,21.17 \
